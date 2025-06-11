@@ -57,6 +57,22 @@ def menu_inserir():
     vsql = "INSERT INTO tb_contatos (nome_contato, telefone_contato, email_contato) VALUES ('"+vnome+"','"+vtelefone+"','"+vemail+"')"
     query(vcon, vsql)
 
+def menu_consultar():
+    os.system("cls")
+    print("\n")
+    vsql = "SELECT * FROM tb_contatos"
+    res = consultar(vcon, vsql)
+    vlim = 10
+    vcont = 0
+    for r in res:
+        print(
+            "ID: {0:<3}  "
+            "Nome: {1:<30}  "
+            "Telefone: {2:<14}  "
+            "Email: {3:<1}".format(r[0], r[1], r[2], r[3])
+        )
+        vcont += 1
+
 opc = 0
 while opc != 6:
     menu_principal()
@@ -70,7 +86,7 @@ while opc != 6:
     elif opc == 3:
         None
     elif opc == 4:
-        None
+        menu_consultar()
     elif opc == 5:
         None
     elif opc == 6:
